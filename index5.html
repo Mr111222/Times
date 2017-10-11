@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="begin">点击开始1</button>
+<span id="show"></span>
+
+<script>
+    var begin=document.getElementById("begin");
+    var show=document.getElementById("show");
+    function Person(name,age){
+        this.age=age;
+        this.i = false;
+        this.live=function(){
+            var t=this;
+            if(!t.i){
+                setTimeout(function(){
+                    if(t.age<20000){
+                        show.textContent=t.age;
+                        t.age++
+                    }
+                    setTimeout(arguments.callee,1000);
+                },1000)
+                t.i = true
+            }
+            
+
+        }
+    }
+    var begins=new Person("zhangsan",10);
+
+</script>
+</body>
+</html>
