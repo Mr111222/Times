@@ -5,8 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-<button id="begin">点击开始1</button>
+<button id="begin">点击开始</button>
 <span id="show"></span>
+
 
 <script>
     var begin=document.getElementById("begin");
@@ -14,23 +15,27 @@
     function Person(name,age){
         this.age=age;
         this.i = false;
+        this.z;
         this.live=function(){
             var t=this;
             if(!t.i){
-                setTimeout(function(){
+               t.z = setTimeout(function(){
                     if(t.age<20000){
                         show.textContent=t.age;
                         t.age++
                     }
-                    setTimeout(arguments.callee,1000);
+                    t.z = setTimeout(arguments.callee,1000);
                 },1000)
                 t.i = true
-            }
-            
+            } 
+        }
 
+        this.close = function(){
+            clearInterval(this.z)
         }
     }
-    var begins=new Person("zhangsan",10);
+    var begins = new Person("zhangsan",10);
+    begin.onclick = function (){begins.live()}
 
 </script>
 </body>
